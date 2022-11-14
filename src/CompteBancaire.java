@@ -2,7 +2,7 @@ public class CompteBancaire {
 
     private int numero;// Numéro du compte.
     private double solde;// Argent disponible sur le compte.
-    Journalisation js = new Journalisation();
+    Journalisation js = Journalisation.getInstance();
 
     // Constructeur d'un CompteBancaire à partir de son numéro.
     public CompteBancaire(int numero) {
@@ -24,7 +24,7 @@ public class CompteBancaire {
         if (retrait > 0.0) {
             if (solde >= retrait) {
                 solde -= retrait;// On retranche la somme retirée au solde.
-                js.ajouterLog("Retrait de " + retrait + "€ sur le compte" + numero + ".");
+                js.ajouterLog("Retrait de " + retrait + "€ sur le compte " + numero + ".");
             } else {
                 js.ajouterLog("/!\\ La banque n'autorise pas de découvert (" + numero + ").");
             }

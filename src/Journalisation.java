@@ -5,6 +5,18 @@ public class Journalisation {
     // Chaine de caractères représentant les messages de log.
     private String log;
 
+    private static Journalisation instance = null;
+
+    public static Journalisation getInstance() {
+        if (instance == null)
+            synchronized (Journalisation.class) {
+                if (instance == null)
+                    instance = new Journalisation();
+
+            }
+        return instance;
+    }
+
     public Journalisation() {
         log = new String();
     }
